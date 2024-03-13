@@ -35,15 +35,20 @@ def count_letters(text):
                     count += 1
             counted_letters[letters[i]] = count
     return counted_letters
-
+#
+# I prefer to order the report in alphabetical order.
+def print_report(num_words,num_letters,path):
+    print(f"--- Begin report of {path} ---")
+    print(f"{num_words} words found in the document")
+    for a in num_letters:
+        amount = num_letters[a]
+        print(f"The {a} character was found {amount} times")
+    print("--- End report ---")
 #
 def main():
     book_path = "books/frankenstein.txt"
     file_contents = get_book_text(book_path)
     #print_book(file_contents)
     counted_letters_text = count_letters(file_contents)
-    print(f"This book has {count_words(file_contents)} words. \n {len(file_contents)-1}")
-    for a in counted_letters_text:
-        amount = counted_letters_text[a]
-        print(f"{a}: {amount}")
+    print_report(count_words(file_contents),counted_letters_text,book_path)
 main()
